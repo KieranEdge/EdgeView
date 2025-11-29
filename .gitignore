@@ -1,0 +1,30 @@
+# Build
+bin/
+obj/
+out/
+
+# User-specific files
+*.user
+*.suo
+*.userprefs
+*.rsuser
+
+# ASP.NET
+Properties/launchSettings.json
+
+# Logs
+*.log
+
+# Temp files
+*.tmp
+
+# Rider / VSCode / VS
+.idea/
+.vscode/
+*.csproj.user
+*.csproj.user
+.vs/
+
+# Node (for your future React frontend)
+node_modules/
+dist/
