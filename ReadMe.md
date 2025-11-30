@@ -46,6 +46,10 @@ Your API will be available at:
 ```
 http://localhost:5181
 ```
+The APIs can be viewed at
+```
+http://localhost:5181/swagger
+```
 
 Test endpoint:
 ```
