@@ -13,10 +13,13 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+
 // -----------------------------------------
 // 2. MVC Controllers
 // -----------------------------------------
 builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
 // -----------------------------------------
 // 3. ONLY register application services
@@ -34,10 +37,18 @@ var app = builder.Build();
 // -----------------------------------------
 // 4. Only map controllers outside EF mode
 // -----------------------------------------
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+
+
 if (!app.Environment.IsEnvironment("EF"))
 {
     app.MapControllers();
     app.MapGet("/", () => "Hello World!");
 }
+
 
 app.Run();
