@@ -15,6 +15,9 @@ Properties/launchSettings.json
 # Logs
 *.log
 
+# Environment files
+.env
+
 # Temp files
 *.tmp
 

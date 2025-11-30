@@ -16,6 +16,16 @@ COPY src/EdgeView.Infrastructure/EdgeView.Infrastructure.csproj src/EdgeView.Inf
 # Restore dependencies
 RUN dotnet restore src/EdgeView.Api/EdgeView.Api.csproj
 
+# Sorting Playwright for docker
+RUN dotnet tool install --global Microsoft.Playwright.CLI
+
+# Ensure the dotnet global tools path is available
+ENV PATH="$PATH:/root/.dotnet/tools"
+
+# Install Playwright browsers (with dependencies)
+RUN playwright install --with-deps
+
+
 # Copy everything
 COPY src/ ./src/
 

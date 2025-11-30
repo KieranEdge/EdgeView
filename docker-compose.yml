@@ -1,0 +1,31 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: edgeview-db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: edgeview
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  api:
+    build:
+      context: .
+      dockerfile: src/EdgeView.Api/Dockerfile
+    container_name: edgeview-api
+    depends_on:
+      - postgres
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Production"
+      ConnectionStrings__DefaultConnection: "Host=postgres;Port=5432;Database=edgeview;Username=postgres;Password=${POSTGRES_PASSWORD}"
+    ports:
+      - "5181:8080"
+
+volumes:
+  postgres_data:

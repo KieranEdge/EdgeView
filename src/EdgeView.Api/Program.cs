@@ -45,5 +45,11 @@ if (!app.Environment.IsEnvironment("EF"))
     app.MapGet("/", () => "Hello World!");
 }
 
+// Automatically apply EF Core migrations when the app starts
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    db.Database.Migrate();
+}
 
 app.Run();
