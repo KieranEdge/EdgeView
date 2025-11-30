@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace EdgeView.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20251130144003_InitialCacheSetup2")]
-    partial class InitialCacheSetup2
+    [Migration("20251130191708_InitialCache")]
+    partial class InitialCache
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

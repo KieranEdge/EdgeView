@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace EdgeView.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCacheSetup : Migration
+    public partial class InitialCache : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
