@@ -34,14 +34,9 @@ if (!builder.Environment.IsEnvironment("EF"))
 
 var app = builder.Build();
 
-// -----------------------------------------
-// 4. Only map controllers outside EF mode
-// -----------------------------------------
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseSwagger();
+app.UseSwaggerUI();
+
 
 
 if (!app.Environment.IsEnvironment("EF"))
